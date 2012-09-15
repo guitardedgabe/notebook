@@ -1,25 +1,28 @@
 #ifndef NOTEBOOK_H
 #define NOTEBOOK_H
 
-#include <iostream>
-#include <ctime>
+#include <vector.h>
+#include "note.h";
 
 class Notebook {
     
     public:
         
         // Constructor
-        Notebook();
+        Notebook( string );
 
-        Note[] get_notes();
-        int create_note( string );
-        int remove_note( string );
-        int update_note( string );
-        string[] list_titles();
+        string get_name();
+        void add_note( string, string );
+        void update_note_body( string );
+        void update_note_title( string );
+        void remove_note( string );
+        Note get_note( string );
+        string[] list_note_titles();
+
     
     private:
 
-        Note[] notes;
+        vector<Note> notes;
         string name;
 };
 

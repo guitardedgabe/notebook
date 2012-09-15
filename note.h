@@ -9,9 +9,13 @@ class Note {
     public:
         
         // Constructor
-        Note();
+        Note( string, string );
 
-        // Note view( title ); // Method to "print" a note into the terminal with its attrs
+        string get_title();
+        void set_title( string );
+        string get_body();
+        void set_body( string );
+        void view_note();
     
     private:
 
@@ -19,7 +23,6 @@ class Note {
         time_t lastUpdated;
         string note;
         string title;
-        string author;
 };
 
 #endif
