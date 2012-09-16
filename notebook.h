@@ -1,7 +1,7 @@
 #ifndef NOTEBOOK_H
 #define NOTEBOOK_H
 
-#include <vector.h>
+#include <vector>
 #include "note.h";
 
 class Notebook {
@@ -43,9 +43,9 @@ string Notebook::get_name() {
 }
 
 
-void Notebook::add_note( string title, string note ) {
+void Notebook::add_note( string title, string body ) {
 
-    Note note( title, note );
+    Note note( title, body );
 
     notes.push_back( note );
 
@@ -113,7 +113,7 @@ void Notebook::list_note_titles() {
 
     for ( int i = 0; i < notes.size(); ++i ) {
         Note n = notes.at(i);
-        cout << c.get_title() << endl;
+        cout << n.get_title() << endl;
     }
 
     cout << endl;

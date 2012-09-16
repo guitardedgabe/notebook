@@ -84,7 +84,7 @@ void Bookshelf::list_notebook_names() {
 
 int Bookshelf::check_for_notebook( string name ) {
 
-    for ( int i = 0; i < notesbook.size(); ++i ) {
+    for ( int i = 0; i < notebooks.size(); ++i ) {
         Notebook nb = notebooks.at( i );
 
         if ( nb.get_name() == name ) {

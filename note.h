@@ -4,6 +4,8 @@
 #include <iostream>
 #include <ctime>
 
+using namespace std;
+
 class Note {
     
     public:
@@ -19,8 +21,8 @@ class Note {
     
     private:
 
-        time_t created;
-        time_t lastUpdated;
+        string created;
+        string lastUpdated;
         string title;
         string body;
 };
