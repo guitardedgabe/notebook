@@ -12,8 +12,8 @@ class Note {
         Note( string, string );
 
         string get_title();
-        void set_title( string );
         string get_body();
+        void set_title( string );
         void set_body( string );
         void view_note();
     
@@ -24,5 +24,11 @@ class Note {
         string note;
         string title;
 };
+
+Note::Note( string title, string body ) {
+
+    
+
+}
 
 #endif
