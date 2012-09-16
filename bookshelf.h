@@ -44,16 +44,16 @@ void Bookshelf::add_notebook( string name ) {
 
     Notebook notebook( name );
 
-    notesbooks.push_back( notebook );
+    notebooks.push_back( notebook );
     
     cout << "Added notebook " << notebook.get_name() << " to the bookshelf." << endl;
 
 }
 
 
-void Bookshelf::remove_notebook( string title ) {
+void Bookshelf::remove_notebook( string name ) {
     
-    int result = check_for_notebook( title );
+    int result = check_for_notebook( name );
 
     if ( result > 0 ) {
         Notebook nb = get_notebook( result );

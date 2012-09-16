@@ -63,6 +63,8 @@ void Notebook::update_note_title( string old_title, string new_title ) {
 
         n.set_title( new_title );
 
+        notes[ result ] = n;
+
         cout << "Updated note title from " << old_title << " to " << n.get_title() << "." << endl;
     } else { 
         cout << "Couldn't update note titled " << old_title << ". No note by that name was found." << endl;
@@ -79,6 +81,8 @@ void Notebook::update_note_body( string title, string new_body ) {
         Note n = get_note( result );
 
         n.set_body( new_body );
+
+        notes[ result ] = n;
 
         cout << "Updated note titled " << n.get_title() << " with the given text." << endl;
     } else {
