@@ -55,12 +55,22 @@ string Note::get_body() {
 
 void Note::set_title( string new_title ) {
 
+    time_t now = time(0);
+    char *dt = ctime( &now );
+
+    lastUpdated = dt;
+
     title = new_title;
 
 }
 
 
 void Note::set_body( string new_body ) {
+
+    time_t now = time(0);
+    char *dt = ctime( &now );
+
+    lastUpdated = dt;
 
     body = new_body;
 
