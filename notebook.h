@@ -9,26 +9,29 @@ class Notebook {
     public:
         
         // Constructor
+        Notebook();
         Notebook( string );
 
         string get_name();
+        void set_name( string );
         void add_note( string, string );
         void update_note_title( string, string );
         void update_note_body( string, string );
         void remove_note( string );
         void list_note_titles();
-
-    
-    private:
-
         int check_for_note( string );
         Note get_note( int );
+    
+    private:
 
         vector<Note> notes;
         string name;
 };
 
 // Constructor
+Notebook::Notebook() {}
+
+
 Notebook::Notebook( string n ) {
 
     name = n;
@@ -39,6 +42,13 @@ Notebook::Notebook( string n ) {
 string Notebook::get_name() {
 
     return name;
+
+}
+
+
+void Notebook::set_name( string n ) {
+
+    name = n;
 
 }
 
@@ -58,7 +68,7 @@ void Notebook::update_note_title( string old_title, string new_title ) {
     
     int result = check_for_note( old_title );
 
-    if ( result > 0 ) {
+    if ( result >= 0 ) {
         Note n = get_note( result );
 
         n.set_title( new_title );
@@ -77,7 +87,7 @@ void Notebook::update_note_body( string title, string new_body ) {
 
     int result = check_for_note( title );
 
-    if ( result > 0 ) {
+    if ( result >= 0 ) {
         Note n = get_note( result );
 
         n.set_body( new_body );
@@ -96,7 +106,7 @@ void Notebook::remove_note( string title ) {
 
     int result = check_for_note( title );
 
-    if ( result > 0 ) {
+    if ( result >= 0 ) {
         notes.erase( notes.begin() + ( result - 1 ) );
 
         cout << "Erased the note titled " << title << " from the notebook." << endl;
@@ -109,14 +119,18 @@ void Notebook::remove_note( string title ) {
 
 void Notebook::list_note_titles() {
     
-    cout << "Here is a printout of all notes in the notebook " << name << ": " << endl;
+    if ( notes.size() > 0 ) {
+        cout << "Here is a printout of all notes in the notebook " << name << ": " << endl;
 
-    for ( int i = 0; i < notes.size(); ++i ) {
-        Note n = notes.at(i);
-        cout << n.get_title() << endl;
+        for ( int i = 0; i < notes.size(); ++i ) {
+            Note n = notes.at(i);
+            cout << n.get_title() << endl;
+        }
+
+        cout << endl;
+    } else {
+        cout << "You don't have any notes in this notebook. You should add one!" << endl;
     }
-
-    cout << endl;
 
 }
 

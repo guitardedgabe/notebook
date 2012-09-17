@@ -81,11 +81,15 @@ void Note::set_body( string new_body ) {
 
 void Note::view_note() {
 
+    cout << "=====================================================" << endl;
+    cout << "==================== Note View ======================" << endl;
     cout << "Created: " << created << endl;
     cout << "Last Updated: " << lastUpdated << endl;
     cout << "Title: " << title << endl;
     cout << "Note:" << endl;
     cout << body << endl;
+    cout << "=====================================================" << endl;
+    cout << "=====================================================" << endl;
 
 }
 

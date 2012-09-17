@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
-#include "bookshelf.h"
+#include "item_manager.h"
 
 void print_bookshelf_menu() {
 
     cout << "1. Create a bookshelf." << endl;
     cout << "2. Load a bookshelf." << endl;
-
-}
-
-void print_notebook_menu() {
-
-
+    cout << "3. List notebook names." << endl;
+    cout << "4. See which notebook you currently have open." << endl;
+    cout << "5. Switch to a different notebook." << endl;
+    cout << "6. List notes in the current notebook." << endl;
+    cout << "7. Add a note to the current notebook." << endl;
+    cout << "8. Edit a note in the current notebook." << endl;
+    cout << "9. View a note in the current notebook." << endl;
+    cout << "10. Add a notebook." << endl;
 
 }
 
@@ -30,21 +32,24 @@ int validate_input( string input ) {
 
 int main() {
 
+    ItemManager itemManager;
     string input;
     bool ok = false;
 
     while (true) {
     
+        cout << "~~~~~Available Commands~~~~~" << endl;
+
         print_bookshelf_menu();
 
-        cout << "Select an option from the menu: ";
+        cout << "\nSelect an option from the menu: ";
         cin >> input;
 
         ok = validate_input( input );
 
         if ( !ok ) {
             while ( !ok ) {
-                cout << "Invalid input. Please re-enter your response: ";
+                cout << "\nInvalid input. Please re-enter your response: ";
                 cin >> input;
 
                 ok = validate_input( input );
@@ -52,15 +57,47 @@ int main() {
         }
 
         if ( input == "1" ) {
-            cout << "You asked to create a bookshelf." << endl;
+            itemManager.create_bookshelf();
         }
 
         else if ( input == "2" ) {
             cout << "You asked to load a bookshelf." << endl;
         }
 
+        else if ( input == "3" ) {
+            itemManager.see_notebook_names();
+        }
+
+        else if ( input == "4" ) {
+            itemManager.get_current_notebook();
+        }
+
+        else if ( input == "5" ) {
+            itemManager.change_notebook();
+        }
+
+        else if ( input == "6" ) {
+            itemManager.see_note_titles();
+        }
+
+        else if ( input == "7" ) {
+            itemManager.add_note();
+        }
+
+        else if ( input == "8" ) {
+            itemManager.edit_note();
+        }
+
+        else if ( input == "9" ) {
+            itemManager.see_note();
+        }
+
+        else if ( input == "10" ) {
+            itemManager.create_notebook();
+        }
+
         else {
-            cout << "You did not select one of the menu choices." << endl;
+            cout << "\nUh oh...\nYou did not select one of the menu choices.\n\n" << endl;
         }
 
     }

@@ -9,26 +9,45 @@ class Bookshelf {
     public:
         
         // Constructor
+        Bookshelf();
         Bookshelf( string );
 
+        bool is_created();
         string get_author();
+        void set_author( string );
         void add_notebook( string );
         void remove_notebook( string );
         void list_notebook_names();
+        int check_for_notebook( string );
+        Notebook get_notebook( int );
     
     private:
 
-        int check_for_notebook( string );
-        Notebook get_notebook( int );
-
         vector<Notebook> notebooks;
         string author;
+        bool created;
 };
 
 // Constructor
+Bookshelf::Bookshelf() {
+
+    created = true;
+
+};
+
+
 Bookshelf::Bookshelf( string owner ) {
 
     author = owner;
+
+    created = true;
+
+}
+
+
+bool Bookshelf::is_created() {
+
+    return created;
 
 }
 
@@ -36,6 +55,13 @@ Bookshelf::Bookshelf( string owner ) {
 string Bookshelf::get_author() {
 
     return author;
+
+}
+
+
+void Bookshelf::set_author( string owner ) {
+
+    author = owner;
 
 }
 
@@ -55,7 +81,7 @@ void Bookshelf::remove_notebook( string name ) {
     
     int result = check_for_notebook( name );
 
-    if ( result > 0 ) {
+    if ( result >= 0 ) {
         Notebook nb = get_notebook( result );
 
         notebooks.erase( notebooks.begin() + ( result - 1 ) );
@@ -70,14 +96,18 @@ void Bookshelf::remove_notebook( string name ) {
 
 void Bookshelf::list_notebook_names() {
 
-    cout << "Here is a printout of all notebooks in the bookshelf: " << endl;
+    if ( notebooks.size() > 0 ) {
+        cout << "Here is a printout of all notebooks in the bookshelf: " << endl;
 
-    for ( int i = 0; i < notebooks.size(); ++i ) {
-        Notebook nb = notebooks.at( i );
-        cout << nb.get_name() << endl;
+        for ( int i = 0; i < notebooks.size(); ++i ) {
+            Notebook nb = notebooks.at( i );
+            cout << nb.get_name() << endl;
+        }
+
+        cout << endl;
+    } else {
+        cout << "There are currently no notebooks in this bookshelf. You should add one!" << endl;
     }
-
-    cout << endl;
 
 }
 
